@@ -1,8 +1,12 @@
 {
 	"name": "auto-view-readme",
 	"displayName": "Auto View Readme",
+	"publisher": "ChaDonSom",
 	"description": "Use a keyboard shortcut to automatically view whatever readme.md file is in the directory of the current open file",
 	"version": "0.0.1",
+	"repository": {
+		"url": "https://github.com/ChaDonSom/auto-view-readme"
+	},
 	"engines": {
 		"vscode": "^1.50.0"
 	},

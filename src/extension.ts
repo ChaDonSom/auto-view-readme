@@ -12,7 +12,13 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		// Open readme candidate
 		let readme = readmeForPath(current)
+		if (!readme) return console.error("No readme found in current directory.")
 		await vscode.commands.executeCommand('vscode.open', readme)
+		/**
+		 * Upon getting it installed on code-server:
+		 * Command 'Auto-View-Readme: View' resulted in an error 
+		 * (Running the contributed command: 'vscode.open' failed. Illegal argument 'resource' - Resource to open)
+		 */
 		// Show preview
 		await vscode.commands.executeCommand('markdown.showPreview')
 
