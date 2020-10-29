@@ -42,6 +42,9 @@ You might see it open the readme file, then open the preview, then close the rea
 
 ## Release Notes
 
+### 0.0.5
+- Add an icon
+
 ### 0.0.4 
 - Ask if you want to search the next higher directory if no readme found
 - Provide some default keybindings

@@ -2,6 +2,9 @@
 
 All notable changes to the "auto-view-readme" extension will be documented in this file.
 
+## 0.0.5
+- Add an icon
+
 ## 0.0.4 
 - Ask if you want to search the next higher directory if no readme found
 - Provide some default keybindings
