@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/semi */
 /* eslint-disable curly */
 import { window, commands, ExtensionContext } from 'vscode'
-import { currentPath, readmeForPath } from './composables'
+import { currentPath, readmeForPath, recursivelyFindReadme } from './composables'
 
 export async function activate(context: ExtensionContext) {
 
 	// Preview the readme file
 	let view = commands.registerCommand('auto-view-readme.view', async () => {
 		let current = currentPath()
-		if (!current) return console.error("No folder or file open.")
+		if (!current) return window.showErrorMessage("No folder or file open.")
 
 		// Open readme candidate
-		let readme = readmeForPath(current)
-		if (!readme) return window.showErrorMessage("No readme found in the current directory.")
+		let readme = await recursivelyFindReadme(current)
+		if (!readme) return window.showErrorMessage("No readme found.")
+
 		await commands.executeCommand('vscode.open', readme)
 		
 		// Show preview
@@ -28,21 +29,26 @@ export async function activate(context: ExtensionContext) {
 	// Open the readme file only, no preview
 	let open = commands.registerCommand('auto-view-readme.open', async () => {
 		let current = currentPath()
-		if (!current) return console.error("No folder or file open.")
+		if (!current) return window.showErrorMessage("No folder or file open.")
 
 		// Open readme candidate
-		let readme = readmeForPath(current)
+		let readme = await recursivelyFindReadme(current)
+		if (!readme) return window.showErrorMessage("No readme found.")
+
 		await commands.executeCommand('vscode.open', readme)
 	})
 
 	// Open the readme file with the preview to the side of the editor
 	let openWithPreview = commands.registerCommand('auto-view-readme.openWithPreview', async () => {
 		let current = currentPath()
-		if (!current) return console.error("No folder or file open.")
+		if (!current) return window.showErrorMessage("No folder or file open.")
 
 		// Open readme candidate
-		let readme = readmeForPath(current)
+		let readme = await recursivelyFindReadme(current)
+		if (!readme) return window.showErrorMessage("No readme found.")
+
 		await commands.executeCommand('vscode.open', readme)
+
 		// Show preview to side
 		await commands.executeCommand('markdown.showPreviewToSide')
 	})

@@ -40,3 +40,25 @@ export function currentPath(): string | undefined {
 export function parentPath(path: string): string {
     return path.split('/').slice(0, -1).join('/')
 }
+
+export async function recursivelyFindReadme(path: string): Promise<Uri|undefined> {
+    let readme = readmeForPath(path)
+
+    if (readme) return readme
+
+    let parent = parentPath(path)
+    if (!parent) return
+
+    let confirm = await window.showQuickPick(["Okay", "Cancel"], {
+        placeHolder: `No readme was found in ${lastLevelOfPath(path)}. Search in ${lastLevelOfPath(parent)}?`
+    })
+
+    if (confirm === "Okay") return recursivelyFindReadme(parent)
+
+    return
+}
+
+export function lastLevelOfPath(path: string): string {
+    let split = path.split('/')
+    return split[split.length - 1]
+}
