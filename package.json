@@ -33,6 +33,20 @@
 				"command": "auto-view-readme.openWithPreview",
 				"title": "Auto-View-Readme: Open with preview"
 			}
+		],
+		"keybindings": [
+			{
+				"command": "auto-view-readme.view",
+				"key": "ctrl+shift+r ctrl+shift+d"
+			},
+			{
+				"command": "auto-view-readme.open",
+				"key": "ctrl+shift+r ctrl+shift+o"
+			},
+			{
+				"command": "auto-view-readme.openWithPreview",
+				"key": "ctrl+shift+r ctrl+shift+p"
+			}
 		]
 	},
 	"scripts": {

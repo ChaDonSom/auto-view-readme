@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/semi */
 /* eslint-disable curly */
 import { window, commands, ExtensionContext } from 'vscode'
-import { currentPath, readmeForPath, recursivelyFindReadme } from './composables'
+import { currentPath, recursivelyFindReadme } from './composables'
 
 export async function activate(context: ExtensionContext) {
 
