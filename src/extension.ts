@@ -10,20 +10,12 @@ export async function activate(context: ExtensionContext) {
 		let current = currentPath()
 		if (!current) return window.showErrorMessage("No folder or file open.")
 
-		// Open readme candidate
+		// Find readme candidate
 		let readme = await recursivelyFindReadme(current)
 		if (!readme) return window.showErrorMessage("No readme found.")
 
-		await commands.executeCommand('vscode.open', readme)
-		
-		// Show preview
-		await commands.executeCommand('markdown.showPreview')
-
-		// Remove editor for readme candidate
-		await new Promise(resolve => setTimeout(resolve, 10))
-		await commands.executeCommand('workbench.action.previousEditor')
-		await new Promise(resolve => setTimeout(resolve, 10))
-		await commands.executeCommand('workbench.action.closeActiveEditor')
+		// Show preview of readme
+		await commands.executeCommand('markdown.showPreview', readme)
 	})
 
 	// Open the readme file only, no preview
@@ -31,10 +23,11 @@ export async function activate(context: ExtensionContext) {
 		let current = currentPath()
 		if (!current) return window.showErrorMessage("No folder or file open.")
 
-		// Open readme candidate
+		// Find readme candidate
 		let readme = await recursivelyFindReadme(current)
 		if (!readme) return window.showErrorMessage("No readme found.")
 
+		// Open readme
 		await commands.executeCommand('vscode.open', readme)
 	})
 
@@ -43,10 +36,11 @@ export async function activate(context: ExtensionContext) {
 		let current = currentPath()
 		if (!current) return window.showErrorMessage("No folder or file open.")
 
-		// Open readme candidate
+		// Find readme candidate
 		let readme = await recursivelyFindReadme(current)
 		if (!readme) return window.showErrorMessage("No readme found.")
 
+		// Open readme
 		await commands.executeCommand('vscode.open', readme)
 
 		// Show preview to side

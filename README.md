@@ -1,5 +1,7 @@
 # Auto-View-Readme
 
+![auto-view-readme icon](images/icon-92.png)
+
 Auto View Readme provides commands and default keybindings for automatically opening whatever readme file is in the current directory, or (with your permission) whatever readme is in the nearest higher directory.
 
 ## Features
@@ -36,11 +38,13 @@ VS Code `^1.50`
 
 ## Known Issues
 
-The method of opening _only a markdown preview_ this extension uses is very hacked together.
-
-You might see it open the readme file, then open the preview, then close the readme file, depending on the capability of your machine.
+Doesn't provide any way to _create_ a readme if no readme is found.
 
 ## Release Notes
+
+### 0.0.6
+- Fix `auto-view-readme.view` command - now simply opens the markdown preview without needing to open an editor
+  first, open the preview, then close the editor.
 
 ### 0.0.5
 - Add an icon

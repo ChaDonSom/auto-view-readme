@@ -2,6 +2,10 @@
 
 All notable changes to the "auto-view-readme" extension will be documented in this file.
 
+## 0.0.6
+- Fix `auto-view-readme.view` command - now simply opens the markdown preview without needing to open an editor
+  first, open the preview, then close the editor.
+
 ## 0.0.5
 - Add an icon
 
